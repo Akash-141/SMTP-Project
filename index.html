@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMTP Lab - Web Client</title>
+    <link rel="stylesheet" href="web_styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📧 SMTP Lab - Web Interface</h1>
+            <div class="connection-status">
+                <span class="status-indicator" id="statusIndicator"></span>
+                <span id="statusText">Disconnected</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Send Email Section -->
+            <div class="panel send-panel">
+                <div class="panel-header">
+                    <h2>✉️ Send Email</h2>
+                </div>
+                <div class="panel-body">
+                    <form id="emailForm">
+                        <div class="form-group">
+                            <label for="sender">From:</label>
+                            <input type="email" id="sender" placeholder="sender@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="recipients">To: (comma-separated)</label>
+                            <input type="text" id="recipients" placeholder="recipient1@example.com, recipient2@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" placeholder="Email subject">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="body">Message:</label>
+                            <textarea id="body" rows="10" placeholder="Type your message here..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Attachments:</label>
+                            <div class="attachment-area">
+                                <input type="file" id="fileInput" multiple class="file-input-hidden" aria-label="File attachment input">
+                                <button type="button" class="btn btn-secondary" onclick="document.getElementById('fileInput').click()">
+                                    📎 Add Attachments
+                                </button>
+                                <span id="attachmentCount">No attachments</span>
+                            </div>
+                            <div id="attachmentList" class="attachment-list"></div>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary" id="sendBtn">
+                                📤 Send Email
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="clearBtn">
+                                🗑️ Clear Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Inbox Section -->
+            <div class="panel inbox-panel">
+                <div class="panel-header">
+                    <h2>📬 Inbox</h2>
+                    <button class="btn btn-small" id="refreshBtn">🔄 Refresh</button>
+                </div>
+                <div class="panel-body">
+                    <div class="inbox-container">
+                        <!-- Recipients List -->
+                        <div class="recipients-section">
+                            <h3>Recipients</h3>
+                            <div id="recipientsList" class="list-container">
+                                <div class="empty-state">No emails yet</div>
+                            </div>
+                        </div>
+
+                        <!-- Emails List -->
+                        <div class="emails-section">
+                            <h3>Emails</h3>
+                            <div id="emailsList" class="list-container">
+                                <div class="empty-state">Select a recipient</div>
+                            </div>
+                        </div>
+
+                        <!-- Email Content -->
+                        <div class="content-section">
+                            <h3>Content</h3>
+                            <div id="emailContent" class="content-container">
+                                <div class="empty-state">Select an email to view</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div id="statusMessage"></div>
+        </footer>
+    </div>
+
+    <script src="web_app.js"></script>
+</body>
+
+</html>
