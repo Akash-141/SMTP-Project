@@ -188,3 +188,4 @@ class InboxViewer(tk.Toplevel):
 if __name__ == "__main__":
     app = SMTPApp()
     app.mainloop()
+
