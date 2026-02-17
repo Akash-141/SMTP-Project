@@ -300,4 +300,5 @@ function showStatus(message, type = '') {
             statusMessage.className = '';
         }, 5000);
     }
+
 }
