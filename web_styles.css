@@ -386,4 +386,5 @@ footer {
 .list-container::-webkit-scrollbar-thumb:hover,
 .content-container::-webkit-scrollbar-thumb:hover {
     background: #555;
+
 }
